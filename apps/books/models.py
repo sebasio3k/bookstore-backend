@@ -1,8 +1,9 @@
 from django.db import models
 
+from apps.core.models import BaseModel
 
-class Author(models.Model):
-    id = models.AutoField(primary_key=True)
+
+class Author(BaseModel):
     name = models.CharField(max_length=200, blank=False, null=False)
     surname = models.CharField(max_length=220, blank=False, null=False)
     nationality = models.CharField(max_length=100, blank=False, null=False)
@@ -18,8 +19,7 @@ class Author(models.Model):
         return f'{self.name} {self.surname}'
 
 
-class Book(models.Model):
-    id = models.AutoField(primary_key=True)
+class Book(BaseModel):
     title = models.CharField('Title', max_length=255, blank=False, null=False)
     publication_date = models.DateField('Publication Date', blank=False, null=False)
     editorial = models.DateField('Editorial', blank=False, null=False)
