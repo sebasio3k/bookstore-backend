@@ -1,6 +1,8 @@
 from django.db import models
 
 from apps.core.models import BaseModel
+# from imagekit.models import ProcessedImageField
+# from imagekit.processors import SmartResize
 
 
 class Author(BaseModel):
@@ -22,7 +24,11 @@ class Author(BaseModel):
 class Book(BaseModel):
     title = models.CharField('Title', max_length=255, blank=False, null=False)
     publication_date = models.DateField('Publication Date', blank=False, null=False)
-    editorial = models.DateField('Editorial', blank=False, null=False)
+    cover = models.URLField('Cover', max_length=255, null=True, blank=True)
+    # cover = ProcessedImageField(upload_to='avatar/', storage=MediaStorage, blank=True, null=True,
+    #                             processors=[SmartResize(600, 800)])
+    description = models.TextField(blank=True, null=True)
+    editorial = models.CharField('Editorial', max_length=100, blank=False, null=False)
     state = models.BooleanField('State', default=True)
 
     """
