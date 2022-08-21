@@ -66,7 +66,6 @@ class BooksUpdateRetrieveDeleteView(generics.RetrieveUpdateDestroyAPIView):
                 updated_relationship.save()
                 return JsonResponse(updated_relationship.data, status=200)
             else:
-                print('else 2')
                 return JsonResponse(updated_relationship.errors, status=200)
         else:
             return JsonResponse(updated_book_info.errors, status=200)
